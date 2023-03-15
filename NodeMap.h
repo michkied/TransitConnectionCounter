@@ -11,6 +11,7 @@ public:
     explicit NodeMap(basic_ifstream<char>& f);
     Node operator[](const string& id) const;
     NodeMap operator+(const Node& node);
+    vector<Node> get_nodes() const;
     int node_position(const Node& node_to_find) const;
     void add_node(const string& id);
     void add_line(const string& node_id, const string& line);

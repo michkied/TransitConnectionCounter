@@ -65,3 +65,7 @@ int NodeMap::node_position(const Node& node) const {
         if (nodes[i] == node) return i;
     return -1;
 }
+
+vector<Node> NodeMap::get_nodes() const {
+    return nodes;
+}

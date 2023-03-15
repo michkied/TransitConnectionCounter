@@ -10,6 +10,7 @@ using namespace std;
 
 int main(int argc, char **argv) {
     int result;
+    string mode;
 
     if (argc < 2) {
         cout << "Data file name not provided";
@@ -28,12 +29,12 @@ int main(int argc, char **argv) {
     cout << "Success!";
 
     while (true) {
-        string mode;
 
         cout << endl << "Actions:" << endl
         << "  a2n  -  Find the minimal number of transfers required to travel between any two nodes" << endl
         << "  s2n  -  Find the minimal number of transfers required to travel between two selected nodes" << endl
         << "  rts  -  Find the number of possible routes between selected nodes using no more than N transfers" << endl
+        << "  exp  -  Export the calculated connection table to a CSV file" << endl
         << "  q  -  Quit" << endl
         << "Choose an action:";
 
@@ -48,6 +49,10 @@ int main(int argc, char **argv) {
         else if (mode == "rts") {
             result = routes(mx, map);
             cout << "  Answer: " << result << endl;
+        }
+        else if (mode == "exp") {
+            export_matrix(mx, map);
+            cout << "  Done! :)" << endl;
         }
         else if (mode == "q") {
             return 0;

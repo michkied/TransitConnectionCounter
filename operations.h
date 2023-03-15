@@ -7,5 +7,6 @@
 int any_nodes(const Matrix& mx);
 int selected_nodes(const Matrix& mx, const NodeMap& map);
 int routes(const Matrix& mx, const NodeMap& map);
+void export_matrix(const Matrix& mx, const NodeMap& map);
 
 #endif //TRANSITCONNECTIONCOUNTER_OPERATIONS_H
