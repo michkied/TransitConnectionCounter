@@ -4,8 +4,8 @@
 #include "Matrix.h"
 #include "NodeMap.h"
 
-int changes(const Matrix& mx);
-int min_changes(const Matrix& mx, const NodeMap& map);
-int connections(const Matrix& mx, const NodeMap& map);
+int any_nodes(const Matrix& mx);
+int selected_nodes(const Matrix& mx, const NodeMap& map);
+int routes(const Matrix& mx, const NodeMap& map);
 
 #endif //TRANSITCONNECTIONCOUNTER_OPERATIONS_H

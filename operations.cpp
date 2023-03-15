@@ -1,6 +1,6 @@
 #include "operations.h"
 
-int changes(const Matrix& mx) {
+int any_nodes(const Matrix& mx) {
     Matrix mx2 = mx;
     int i = 0;
     while (mx2.has_zero()){
@@ -45,7 +45,7 @@ int ask4changes() {
     return num;
 }
 
-int min_changes(const Matrix& mx, const NodeMap& map) {
+int selected_nodes(const Matrix& mx, const NodeMap& map) {
     vector<Node> v = ask42nodes(map);
     int a = map.node_position(v[0]);
     int b = map.node_position(v[1]);
@@ -60,7 +60,7 @@ int min_changes(const Matrix& mx, const NodeMap& map) {
     return i;
 }
 
-int connections(const Matrix& mx, const NodeMap& map) {
+int routes(const Matrix& mx, const NodeMap& map) {
     vector<Node> v = ask42nodes(map);
     int a = map.node_position(v[0]);
     int b = map.node_position(v[1]);
