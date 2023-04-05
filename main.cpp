@@ -10,6 +10,7 @@ using namespace std;
 
 int main(int argc, char **argv) {
     int result;
+    char separator;
     string mode;
     string filename;
 
@@ -28,10 +29,17 @@ int main(int argc, char **argv) {
         cin >> filename;
         f.open(filename);
     }
+    cout << "Field separator (default ;): ";
+    cin >> noskipws >> separator;
 
     cout << "Loading data...   ";
-    NodeMap map(f);
+    NodeMap map(f, separator);
     f.close();
+    if (map.get_nodes().empty()) {
+        cout << endl << "ERROR: The file does not contain any nodes. " << endl
+        << "Make sure that the given field separator is correct." << endl;
+        return 1;
+    }
     Matrix mx = map.convert_to_matrix();
     cout << "Success!" << endl;
 
@@ -43,7 +51,7 @@ int main(int argc, char **argv) {
              << "  exp  -  Export the calculated connection table to a CSV file" << endl
              << "  q  -  Quit" << endl
              << "Choose an action: ";
-        cin >> mode;
+        cin >> skipws >> mode;
 
 
         if (mode == "a2n") {

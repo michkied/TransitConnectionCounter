@@ -8,7 +8,7 @@
 class NodeMap {
     vector<Node> nodes;
 public:
-    explicit NodeMap(basic_ifstream<char>& f);
+    explicit NodeMap(basic_ifstream<char>& f, char separator);
     Node operator[](const string& id) const;
     NodeMap operator+(const Node& node);
     vector<Node> get_nodes() const;

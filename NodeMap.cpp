@@ -3,12 +3,12 @@
 #include "NodeMap.h"
 
 
-NodeMap::NodeMap(basic_ifstream<char>& f) {
+NodeMap::NodeMap(basic_ifstream<char>& f, char separator) {
     string line, node_id, line_name;
     while (getline(f,line)) {
         istringstream _(line);
-        while (getline(_, node_id, ' ')) {
-            line_name = line.substr(0, line.find(' '));
+        while (getline(_, node_id, separator)) {
+            line_name = line.substr(0, line.find(separator));
             if (node_id != line_name)
                 add_line(node_id, line_name);
         }
