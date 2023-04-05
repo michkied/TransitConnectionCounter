@@ -11,34 +11,41 @@ using namespace std;
 int main(int argc, char **argv) {
     int result;
     string mode;
+    string filename;
 
-    if (argc < 2) {
-        cout << "Data file name not provided";
-        return 1;
+    if (argc == 2) {
+        filename = argv[1];
     }
-    ifstream f(argv[1]);
-    if (!f.is_open()) {
-        cout << "Unable to open file";
-        return 1;
+    else {
+        cout << "Data file name: ";
+        cin >> filename;
+    }
+
+    ifstream f(filename);
+    while (!f.is_open()) {
+        cout << "Unable to open file." << endl;
+        cout << "Data file name: ";
+        cin >> filename;
+        f.open(filename);
     }
 
     cout << "Loading data...   ";
     NodeMap map(f);
     f.close();
     Matrix mx = map.convert_to_matrix();
-    cout << "Success!";
+    cout << "Success!" << endl;
 
     while (true) {
-
         cout << endl << "Actions:" << endl
-        << "  a2n  -  Find the minimal number of transfers required to travel between any two nodes" << endl
-        << "  s2n  -  Find the minimal number of transfers required to travel between two selected nodes" << endl
-        << "  rts  -  Find the number of possible routes between selected nodes using no more than N transfers" << endl
-        << "  exp  -  Export the calculated connection table to a CSV file" << endl
-        << "  q  -  Quit" << endl
-        << "Choose an action:";
-
+             << "  a2n  -  Find the minimal number of transfers required to travel between any two nodes" << endl
+             << "  s2n  -  Find the minimal number of transfers required to travel between two selected nodes" << endl
+             << "  rts  -  Find the number of possible routes between selected nodes using no more than N transfers" << endl
+             << "  exp  -  Export the calculated connection table to a CSV file" << endl
+             << "  q  -  Quit" << endl
+             << "Choose an action: ";
         cin >> mode;
+
+
         if (mode == "a2n") {
             cout << "  Answer: " << any_nodes(mx) << endl;
         }
@@ -57,5 +64,6 @@ int main(int argc, char **argv) {
         else if (mode == "q") {
             return 0;
         }
+        else cout << "Action not found!" << endl;
     }
 }

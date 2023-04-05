@@ -4,7 +4,7 @@
 vector<Node> ask42nodes(const NodeMap& map) {
     string nodeA, nodeB;
     while (true) {
-        cout << "  Name of the first node:";
+        cout << "  Name of the first node: ";
         cin >> nodeA;
         if (!map[nodeA].is_empty()) break;
         cout << "    Node with this name does not exist." << endl;
@@ -26,7 +26,7 @@ vector<Node> ask42nodes(const NodeMap& map) {
 int ask4transfers() {
     int num;
     while (true) {
-        cout << "  Number of transfers:";
+        cout << "  Number of transfers: ";
         cin >> num;
         if (!cin.fail()) break;
         cin.clear();
@@ -38,7 +38,7 @@ int ask4transfers() {
 
 string ask4separator() {
     string separator;
-    cout << "  CSV field separator (default ;) :";
+    cout << "  CSV field separator (default ;) : ";
     cin >> separator;
     if (separator.empty()) {
         separator = ";";
